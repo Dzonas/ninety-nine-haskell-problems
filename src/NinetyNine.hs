@@ -12,7 +12,7 @@ myButLast [x, _] = x
 myButLast (_ : xs) = myButLast xs
 
 elementAt :: [a] -> Int -> a
-elementAt xs n = elementAt' xs 1 n
+elementAt xs = elementAt' xs 1
 
 elementAt' :: [a] -> Int -> Int -> a
 elementAt' [] _ _ = error "index outside of bounds"
