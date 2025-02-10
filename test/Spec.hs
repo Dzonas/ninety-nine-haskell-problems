@@ -1,3 +1,4 @@
+import Control.Exception (evaluate)
 import NinetyNine
 import Test.Hspec
 
@@ -10,3 +11,13 @@ main = hspec $ do
 
       it "myLast raises an error for empty list" $ do
         myLast [] `shouldThrow` errorCall "empty list"
+
+    describe "myButLast" $ do
+      it "myButLast returns second last element of a non-empty list" $ do
+        myButLast [1, 2, 3, 4] `shouldBe` (3 :: Int)
+
+      it "myButLast returns an error for an empty list" $ do
+        evaluate (myButLast []) `shouldThrow` errorCall "list with less than 2 elements"
+
+      it "myButLast returns an error for a list with one element" $ do
+        evaluate (myButLast [1 :: Int]) `shouldThrow` errorCall "list with less than 2 elements"
