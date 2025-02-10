@@ -1,7 +1,7 @@
 module Main where
 
-import qualified MyLib (someFunc)
+import qualified NinetyNine (someFunc)
 
 main :: IO ()
 main = do
-  putStrLn MyLib.someFunc
+  putStrLn NinetyNine.someFunc

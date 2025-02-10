@@ -1,4 +1,4 @@
-module MyLib (someFunc) where
+module NinetyNine (someFunc) where
 
 someFunc :: String
 someFunc = "someFunc"
