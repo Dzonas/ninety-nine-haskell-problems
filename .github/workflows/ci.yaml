@@ -6,3 +6,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: haskell-actions/run-ormolu@v17
+
+  run-hlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: haskell-actions/hlint-setup@v2
+        with:
+          version: "3.10"
+      - uses: haskell-actions/hlint-run@v2
+        with:
+          path: '["src/", "test/"]'
+          fail-on: warning
