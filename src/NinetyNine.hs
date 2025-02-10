@@ -1,4 +1,6 @@
-module NinetyNine (someFunc) where
+module NinetyNine where
 
-someFunc :: String
-someFunc = "someFunc"
+myLast :: [a] -> a
+myLast [] = error "empty list"
+myLast [x] = x
+myLast (_ : xs) = myLast xs
