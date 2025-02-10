@@ -21,3 +21,16 @@ main = hspec $ do
 
       it "myButLast returns an error for a list with one element" $ do
         evaluate (myButLast [1 :: Int]) `shouldThrow` errorCall "list with less than 2 elements"
+
+    describe "elementAt" $ do
+      it "returns element at n-th position starting with 1" $ do
+        elementAt [1, 2, 3] 2 `shouldBe` (2 :: Int)
+
+      it "throws an error when given 0 as index" $ do
+        evaluate (elementAt [1 :: Int, 2, 3] 0) `shouldThrow` errorCall "index outside of bounds"
+
+      it "throws an error when given negative index" $ do
+        evaluate (elementAt ([1, 2, 3] :: [Int]) (-1)) `shouldThrow` errorCall "index outside of bounds"
+
+      it "throws an error when given index outside of bounds" $ do
+        evaluate (elementAt ([1, 2, 3] :: [Int]) 4) `shouldThrow` errorCall "index outside of bounds"
