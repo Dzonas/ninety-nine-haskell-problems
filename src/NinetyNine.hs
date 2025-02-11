@@ -55,3 +55,14 @@ compress (x : xs)
   | otherwise = x : x' : xs'
   where
     (x', xs') = fromJust . uncons . compress $ xs
+
+-- Ex.9
+pack :: (Eq a) => [a] -> [[a]]
+pack [] = []
+pack [x] = [[x]]
+pack (x : xs)
+  | x == x' = (x : xs') : xss
+  | otherwise = [x] : xs' : xss
+  where
+    (x', _) = fromJust . uncons $ xs'
+    (xs', xss) = fromJust . uncons . pack $ xs

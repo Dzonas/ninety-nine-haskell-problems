@@ -78,3 +78,13 @@ main = hspec $ do
 
       it "returns list with consecutive duplicates removed" $ do
         compress "aaaabccaadeeee" `shouldBe` "abcade"
+
+    describe "pack" $ do
+      it "returns an empty list when given an empty list" $ do
+        pack [] `shouldBe` ([] :: [[Int]])
+
+      it "returns a list containing one list with one element when given a list with one element" $ do
+        pack [5] `shouldBe` ([[5]] :: [[Int]])
+
+      it "returns a list of lists where consecutive duplicates are in the same sublists" $ do
+        pack ['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e'] `shouldBe` ["aaaa", "b", "cc", "aa", "d", "eeee"]
