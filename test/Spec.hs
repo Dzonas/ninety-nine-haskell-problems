@@ -48,3 +48,13 @@ main = hspec $ do
 
       it "return empty list when given empty list" $ do
         myReverse [] `shouldBe` ([] :: [Int])
+
+    describe "isPalindrome" $ do
+      it "returns False when given non palindrome" $ do
+        isPalindrome ([1, 2, 3] :: [Int]) `shouldBe` False
+
+      it "returns True when given palindrome of even length" $ do
+        isPalindrome "abba" `shouldBe` True
+
+      it "returns True when given palindrome of odd length" $ do
+        isPalindrome "kayak" `shouldBe` True

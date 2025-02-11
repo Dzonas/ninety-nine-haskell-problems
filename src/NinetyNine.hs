@@ -25,3 +25,6 @@ myLength = sum . map (const 1)
 
 myReverse :: [a] -> [a]
 myReverse = foldl (flip (:)) []
+
+isPalindrome :: (Eq a) => [a] -> Bool
+isPalindrome xs = xs == reverse xs
