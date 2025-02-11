@@ -19,3 +19,6 @@ elementAt' [] _ _ = error "index outside of bounds"
 elementAt' (x : xs) k n
   | k == n = x
   | otherwise = elementAt' xs (k + 1) n
+
+myLength :: [a] -> Int
+myLength = sum . map (const 1)

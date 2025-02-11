@@ -34,3 +34,10 @@ main = hspec $ do
 
       it "throws an error when given index outside of bounds" $ do
         evaluate (elementAt ([1, 2, 3] :: [Int]) 4) `shouldThrow` errorCall "index outside of bounds"
+
+    describe "myLength" $ do
+      it "returns length of a non-empty list" $ do
+        myLength ([1, 2, 3] :: [Int]) `shouldBe` (3 :: Int)
+
+      it "returns 0 when given an empty list" $ do
+        myLength [] `shouldBe` (0 :: Int)
