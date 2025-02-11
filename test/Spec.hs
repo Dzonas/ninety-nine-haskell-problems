@@ -58,3 +58,13 @@ main = hspec $ do
 
       it "returns True when given palindrome of odd length" $ do
         isPalindrome "kayak" `shouldBe` True
+
+    describe "flatten" $ do
+      it "returns list with one value if given Elem" $ do
+        flatten (Elem 5) `shouldBe` ([5] :: [Int])
+
+      it "returns empty list when given List []" $ do
+        flatten (List []) `shouldBe` ([] :: [Int])
+
+      it "returns flat list containing all elements of NestedList" $ do
+        flatten (List [Elem 1, List [Elem 2, List [Elem 3, Elem 4], Elem 5]]) `shouldBe` ([1, 2, 3, 4, 5] :: [Int])
