@@ -18,3 +18,13 @@ jobs:
         with:
           path: '["src/", "test/"]'
           fail-on: warning
+
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: haskell-actions/setup@v2
+        with:
+          ghc-version: "9.10"
+          cabal-version: "3.12"
+      - run: cabal test
