@@ -1,16 +1,19 @@
 module NinetyNine where
 
+-- Ex.1
 myLast :: [a] -> a
 myLast [] = error "empty list"
 myLast [x] = x
 myLast (_ : xs) = myLast xs
 
+-- Ex.2
 myButLast :: [a] -> a
 myButLast [] = error "list with less than 2 elements"
 myButLast [_] = error "list with less than 2 elements"
 myButLast [x, _] = x
 myButLast (_ : xs) = myButLast xs
 
+-- Ex.3
 elementAt :: [a] -> Int -> a
 elementAt xs = elementAt' xs 1
 
@@ -20,15 +23,19 @@ elementAt' (x : xs) k n
   | k == n = x
   | otherwise = elementAt' xs (k + 1) n
 
+-- Ex.4
 myLength :: [a] -> Int
 myLength = sum . map (const 1)
 
+-- Ex.5
 myReverse :: [a] -> [a]
 myReverse = foldl (flip (:)) []
 
+-- Ex.6
 isPalindrome :: (Eq a) => [a] -> Bool
 isPalindrome xs = xs == reverse xs
 
+-- Ex.7
 data NestedList a = Elem a | List [NestedList a]
 
 flatten :: NestedList a -> [a]
