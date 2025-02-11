@@ -41,3 +41,10 @@ main = hspec $ do
 
       it "returns 0 when given an empty list" $ do
         myLength [] `shouldBe` (0 :: Int)
+
+    describe "myReverse" $ do
+      it "returns reverse of a non-empty list" $ do
+        myReverse [1, 2, 3] `shouldBe` ([3, 2, 1] :: [Int])
+
+      it "return empty list when given empty list" $ do
+        myReverse [] `shouldBe` ([] :: [Int])

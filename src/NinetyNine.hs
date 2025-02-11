@@ -22,3 +22,6 @@ elementAt' (x : xs) k n
 
 myLength :: [a] -> Int
 myLength = sum . map (const 1)
+
+myReverse :: [a] -> [a]
+myReverse = foldl (flip (:)) []
