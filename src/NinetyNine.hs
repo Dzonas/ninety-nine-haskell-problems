@@ -66,3 +66,10 @@ pack (x : xs)
   where
     (x', _) = fromJust . uncons $ xs'
     (xs', xss) = fromJust . uncons . pack $ xs
+
+-- Ex.10
+encode :: (Eq a) => [a] -> [(Int, a)]
+encode [] = []
+encode xs = map (\xs' -> (length xs', head' xs')) . pack $ xs
+  where
+    head' = fst . fromJust . uncons

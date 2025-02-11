@@ -88,3 +88,10 @@ main = hspec $ do
 
       it "returns a list of lists where consecutive duplicates are in the same sublists" $ do
         pack ['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e'] `shouldBe` ["aaaa", "b", "cc", "aa", "d", "eeee"]
+
+    describe "encode" $ do
+      it "returns an empty list when given an empty list" $ do
+        encode [] `shouldBe` ([] :: [(Int, Int)])
+
+      it "returns run-length encoding of given list" $ do
+        encode "aaaabccaadeeee" `shouldBe` [(4, 'a'), (1, 'b'), (2, 'c'), (2, 'a'), (1, 'd'), (4, 'e')]
