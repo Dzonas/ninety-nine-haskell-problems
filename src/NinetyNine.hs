@@ -1,5 +1,8 @@
 module NinetyNine where
 
+import Data.List (uncons)
+import Data.Maybe (fromJust)
+
 -- Ex.1
 myLast :: [a] -> a
 myLast [] = error "empty list"
@@ -42,3 +45,13 @@ flatten :: NestedList a -> [a]
 flatten (Elem n) = [n]
 flatten (List []) = []
 flatten (List (x : xs)) = flatten x <> flatten (List xs)
+
+-- Ex.8
+compress :: (Eq a) => [a] -> [a]
+compress [] = []
+compress [x] = [x]
+compress (x : xs)
+  | x == x' = x' : xs'
+  | otherwise = x : x' : xs'
+  where
+    (x', xs') = fromJust . uncons . compress $ xs

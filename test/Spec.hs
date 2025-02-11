@@ -68,3 +68,13 @@ main = hspec $ do
 
       it "returns flat list containing all elements of NestedList" $ do
         flatten (List [Elem 1, List [Elem 2, List [Elem 3, Elem 4], Elem 5]]) `shouldBe` ([1, 2, 3, 4, 5] :: [Int])
+
+    describe "compress" $ do
+      it "returns empty list when given empty list" $ do
+        compress [] `shouldBe` ([] :: [Int])
+
+      it "returns list unchanged when given list with one element" $ do
+        compress [1] `shouldBe` ([1] :: [Int])
+
+      it "returns list with consecutive duplicates removed" $ do
+        compress "aaaabccaadeeee" `shouldBe` "abcade"
