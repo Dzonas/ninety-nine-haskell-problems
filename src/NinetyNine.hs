@@ -83,3 +83,9 @@ encodeModified = map encodeModified' . encode
 encodeModified' :: (Int, a) -> Encoded a
 encodeModified' (1, x) = Single x
 encodeModified' (n, x) = Multiple n x
+
+-- Ex.12
+decodeModified :: [Encoded a] -> [a]
+decodeModified [] = []
+decodeModified ((Single x) : xs) = x : decodeModified xs
+decodeModified ((Multiple n x) : xs) = replicate n x ++ decodeModified xs

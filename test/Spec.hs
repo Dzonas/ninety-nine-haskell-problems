@@ -102,3 +102,10 @@ main = hspec $ do
 
       it "returns run-length encoding of a given list using Encoded type" $ do
         encodeModified "aaaabccaadeeee" `shouldBe` [Multiple 4 'a', Single 'b', Multiple 2 'c', Multiple 2 'a', Single 'd', Multiple 4 'e']
+
+    describe "decodeModified" $ do
+      it "returns an empty list when given an empty list" $ do
+        decodeModified [] `shouldBe` ([] :: [Int])
+
+      it "returns decoded run-length encoding" $ do
+        decodeModified [Multiple 4 'a', Single 'b', Multiple 2 'c', Multiple 2 'a', Single 'd', Multiple 4 'e'] `shouldBe` "aaaabccaadeeee"
