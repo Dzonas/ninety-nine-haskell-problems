@@ -89,3 +89,13 @@ decodeModified :: [Encoded a] -> [a]
 decodeModified [] = []
 decodeModified ((Single x) : xs) = x : decodeModified xs
 decodeModified ((Multiple n x) : xs) = replicate n x ++ decodeModified xs
+
+-- Ex.13
+encodeDirect :: (Eq a) => [a] -> [Encoded a]
+encodeDirect [] = []
+encodeDirect [x] = [Single x]
+encodeDirect (x : xs) = case e of
+  Single x' -> if x == x' then Multiple 2 x : es else [Single x, Single x'] ++ es
+  Multiple n x' -> if x == x' then Multiple (n + 1) x : es else [Single x, Multiple n x'] ++ es
+  where
+    (e, es) = fromJust . uncons . encodeDirect $ xs

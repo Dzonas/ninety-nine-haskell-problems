@@ -109,3 +109,13 @@ main = hspec $ do
 
       it "returns decoded run-length encoding" $ do
         decodeModified [Multiple 4 'a', Single 'b', Multiple 2 'c', Multiple 2 'a', Single 'd', Multiple 4 'e'] `shouldBe` "aaaabccaadeeee"
+
+    describe "encodeDirect" $ do
+      it "returns an empty list when given an empty list" $ do
+        encodeDirect [] `shouldBe` ([] :: [Encoded Int])
+
+      it "returns a list with one element of Single a when given a list with single element" $ do
+        encodeDirect "a" `shouldBe` [Single 'a']
+
+      it "returns run-length encoding of a given list using Encoded type" $ do
+        encodeDirect "aaaabccaadeeee" `shouldBe` [Multiple 4 'a', Single 'b', Multiple 2 'c', Multiple 2 'a', Single 'd', Multiple 4 'e']
