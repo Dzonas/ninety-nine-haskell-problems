@@ -73,3 +73,13 @@ encode [] = []
 encode xs = map (\xs' -> (length xs', head' xs')) . pack $ xs
   where
     head' = fst . fromJust . uncons
+
+-- Ex.11
+data Encoded a = Single a | Multiple Int a deriving (Show, Eq)
+
+encodeModified :: (Eq a) => [a] -> [Encoded a]
+encodeModified = map encodeModified' . encode
+
+encodeModified' :: (Int, a) -> Encoded a
+encodeModified' (1, x) = Single x
+encodeModified' (n, x) = Multiple n x
