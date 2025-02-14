@@ -126,3 +126,16 @@ main = hspec $ do
 
       it "returns a list with every element duplicated" $ do
         dupli [1, 2, 3] `shouldBe` ([1, 1, 2, 2, 3, 3] :: [Int])
+
+    describe "repli" $ do
+      it "returns an empty list when given an empty list and n > 0" $ do
+        repli [] 5 `shouldBe` ([] :: [Int])
+
+      it "returns an empty list when given an empty list and n == 0" $ do
+        repli [] 0 `shouldBe` ([] :: [Int])
+
+      it "returns an empty list when given an non-empty list and n == 0" $ do
+        repli "abc" 0 `shouldBe` ""
+
+      it "returns a list with every element repeated n times" $ do
+        repli "abc" 3 `shouldBe` "aaabbbccc"
