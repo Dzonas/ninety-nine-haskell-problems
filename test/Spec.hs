@@ -119,3 +119,10 @@ main = hspec $ do
 
       it "returns run-length encoding of a given list using Encoded type" $ do
         encodeDirect "aaaabccaadeeee" `shouldBe` [Multiple 4 'a', Single 'b', Multiple 2 'c', Multiple 2 'a', Single 'd', Multiple 4 'e']
+
+    describe "dupli" $ do
+      it "returns an empty list when given an empty list" $ do
+        dupli [] `shouldBe` ([] :: [Int])
+
+      it "returns a list with every element duplicated" $ do
+        dupli [1, 2, 3] `shouldBe` ([1, 1, 2, 2, 3, 3] :: [Int])

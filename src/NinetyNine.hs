@@ -99,3 +99,8 @@ encodeDirect (x : xs) = case e of
   Multiple n x' -> if x == x' then Multiple (n + 1) x : es else [Single x, Multiple n x'] ++ es
   where
     (e, es) = fromJust . uncons . encodeDirect $ xs
+
+-- Ex.14
+dupli :: [a] -> [a]
+dupli [] = []
+dupli (x : xs) = x : x : dupli xs
