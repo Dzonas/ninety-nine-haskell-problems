@@ -113,3 +113,13 @@ repli (x : xs) n = repli' x n ++ repli xs n
 repli' :: a -> Int -> [a]
 repli' _ 0 = []
 repli' x n = x : repli' x (n - 1)
+
+-- Ex.16
+dropEvery :: [a] -> Int -> [a]
+dropEvery xs 0 = xs
+dropEvery xs n = dropEvery' xs n n
+
+dropEvery' :: [a] -> Int -> Int -> [a]
+dropEvery' [] _ _ = []
+dropEvery' (_ : xs) n 1 = dropEvery' xs n n
+dropEvery' (x : xs) n n' = x : dropEvery' xs n (n' - 1)

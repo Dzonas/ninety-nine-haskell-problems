@@ -139,3 +139,13 @@ main = hspec $ do
 
       it "returns a list with every element repeated n times" $ do
         repli "abc" 3 `shouldBe` "aaabbbccc"
+
+    describe "dropEvery" $ do
+      it "returns an empty list when given an empty list" $ do
+        dropEvery "" 5 `shouldBe` ""
+
+      it "returns original list unchanged when n == 0" $ do
+        dropEvery "abcdefghik" 0 `shouldBe` "abcdefghik"
+
+      it "returns a list with every n-th element dropped" $ do
+        dropEvery "abcdefghik" 3 `shouldBe` "abdeghk"
