@@ -162,3 +162,22 @@ main = hspec $ do
 
       it "returns a tuple of two lists, where the first list has all elements before given index and the second has the rest" $ do
         split "abcdefghik" 3 `shouldBe` ("abc", "defghik")
+
+    describe "slice" $ do
+      it "returns an empty list when given an empty list" $ do
+        slice [] 1 2 `shouldBe` ([] :: [Int])
+
+      it "returns an empty list when indexes are out of bounds" $ do
+        slice "ab" 3 4 `shouldBe` ""
+
+      it "returns a slice from 'i' to the end of the list if 'k' is outside of bounds" $ do
+        slice "abc" 2 10 `shouldBe` "bc"
+
+      it "returns the same element if i == k" $ do
+        slice "abc" 2 2 `shouldBe` "b"
+
+      it "returns all elements between 'i' and 'k' if both are inside of bounds" $ do
+        slice ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'k'] 3 7 `shouldBe` "cdefg"
+
+      it "throws an error when k < i" $ do
+        evaluate (slice "abc" 5 2) `shouldThrow` errorCall "right index is less than left index"

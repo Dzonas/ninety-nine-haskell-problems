@@ -132,3 +132,16 @@ split (x : xs) n
   | otherwise = (x : left, right)
   where
     (left, right) = split xs (n - 1)
+
+-- Ex.18
+slice :: [a] -> Int -> Int -> [a]
+slice xs i k
+  | k < i = error "right index is less than left index"
+  | otherwise = slice' xs i k
+
+slice' :: [a] -> Int -> Int -> [a]
+slice' [] _ _ = []
+slice' (x : xs) i k
+  | i > 1 = slice' xs (i - 1) (k - 1)
+  | k > 0 = x : slice' xs i (k - 1)
+  | otherwise = []
