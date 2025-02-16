@@ -149,3 +149,16 @@ main = hspec $ do
 
       it "returns a list with every n-th element dropped" $ do
         dropEvery "abcdefghik" 3 `shouldBe` "abdeghk"
+
+    describe "split" $ do
+      it "returns a tuple of empty lists when given an empty list" $ do
+        split [] 10 `shouldBe` (([], []) :: ([Int], [Int]))
+
+      it "returns a tuple of two lists where the first list has all the elements of the original when index is after the end of the list" $ do
+        split "abc" 10 `shouldBe` ("abc", "")
+
+      it "returns a tuple of two lists where the second list has all the elements of the original when given index == 0" $ do
+        split "abc" 0 `shouldBe` ("", "abc")
+
+      it "returns a tuple of two lists, where the first list has all elements before given index and the second has the rest" $ do
+        split "abcdefghik" 3 `shouldBe` ("abc", "defghik")

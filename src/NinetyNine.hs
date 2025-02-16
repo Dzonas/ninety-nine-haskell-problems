@@ -123,3 +123,12 @@ dropEvery' :: [a] -> Int -> Int -> [a]
 dropEvery' [] _ _ = []
 dropEvery' (_ : xs) n 1 = dropEvery' xs n n
 dropEvery' (x : xs) n n' = x : dropEvery' xs n (n' - 1)
+
+-- Ex.17
+split :: [a] -> Int -> ([a], [a])
+split [] _ = ([], [])
+split (x : xs) n
+  | n == 0 = ([], x : xs)
+  | otherwise = (x : left, right)
+  where
+    (left, right) = split xs (n - 1)
