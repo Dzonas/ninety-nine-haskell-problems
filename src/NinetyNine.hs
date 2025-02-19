@@ -159,3 +159,9 @@ rotate xs n
           (left, right) = splitAt n' xs
        in right ++ left
   | otherwise = xs
+
+-- Ex.20
+removeAt :: Int -> [a] -> (a, [a])
+removeAt n xs = case splitAt (n - 1) xs of
+  (left, r : rs) -> (r, left ++ rs)
+  _ -> error "index out of bounds"

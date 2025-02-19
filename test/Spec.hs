@@ -197,3 +197,16 @@ main = hspec $ do
 
       it "return list rotated by modulo of n" $ do
         rotate "abcdefgh" 9 `shouldBe` "bcdefgha"
+
+    describe "removeAt" $ do
+      it "throws an error when given an empty list" $ do
+        evaluate (removeAt 2 "") `shouldThrow` errorCall "index out of bounds"
+
+      it "throws an error when given an negative index" $ do
+        evaluate (removeAt (-1) "") `shouldThrow` errorCall "index out of bounds"
+
+      it "throws an error when given an index after the end of the list" $ do
+        evaluate (removeAt 5 "abcd") `shouldThrow` errorCall "index out of bounds"
+
+      it "returns an element at given index and a list without that element" $ do
+        removeAt 2 "abcd" `shouldBe` ('b', "acd")
