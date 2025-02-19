@@ -145,3 +145,17 @@ slice' (x : xs) i k
   | i > 1 = slice' xs (i - 1) (k - 1)
   | k > 0 = x : slice' xs i (k - 1)
   | otherwise = []
+
+-- Ex.19
+rotate :: [a] -> Int -> [a]
+rotate [] _ = []
+rotate xs n
+  | n > 0 =
+      let n' = mod n (length xs)
+          (left, right) = splitAt n' xs
+       in right ++ left
+  | n < 0 =
+      let n' = length xs - abs n
+          (left, right) = splitAt n' xs
+       in right ++ left
+  | otherwise = xs

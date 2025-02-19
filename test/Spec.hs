@@ -181,3 +181,19 @@ main = hspec $ do
 
       it "throws an error when k < i" $ do
         evaluate (slice "abc" 5 2) `shouldThrow` errorCall "right index is less than left index"
+
+    describe "rotate" $ do
+      it "returns an empty list when given an empty list" $ do
+        rotate "" 10 `shouldBe` ""
+
+      it "returns the original list unchanged when n == 0" $ do
+        rotate "abc" 0 `shouldBe` "abc"
+
+      it "returns list rotated left when given a positive n" $ do
+        rotate "abcdefgh" 3 `shouldBe` "defghabc"
+
+      it "returns list rotated right when given a negative n" $ do
+        rotate "abcdefgh" (-2) `shouldBe` "ghabcdef"
+
+      it "return list rotated by modulo of n" $ do
+        rotate "abcdefgh" 9 `shouldBe` "bcdefgha"
