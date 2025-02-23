@@ -171,3 +171,7 @@ insertAt :: a -> [a] -> Int -> [a]
 insertAt x xs n = left ++ [x] ++ right
   where
     (left, right) = splitAt (n - 1) xs
+
+-- Ex.22
+range :: Int -> Int -> [Int]
+range a b = [a .. b]

@@ -217,3 +217,13 @@ main = hspec $ do
 
       it "returns list with an element inserted" $ do
         insertAt 'X' "abcd" 2 `shouldBe` "aXbcd"
+
+    describe "range" $ do
+      it "returns an empty list when b is less than a" $ do
+        range 1 (-2) `shouldBe` []
+
+      it "returns a one element list when a == b" $ do
+        range 1 1 `shouldBe` [1]
+
+      it "returns a list with elements from a to b" $ do
+        range 4 9 `shouldBe` [4, 5, 6, 7, 8, 9]
