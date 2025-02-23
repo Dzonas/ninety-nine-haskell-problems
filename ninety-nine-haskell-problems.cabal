@@ -67,7 +67,8 @@ library
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.20.0.0
+    build-depends:    base ^>=4.20.0.0,
+                      random ^>=1.2.1.2
 
     -- Directories containing source files.
     hs-source-dirs:   src
@@ -101,4 +102,5 @@ test-suite ninety-nine-haskell-problems-test
     build-depends:
         base ^>=4.20.0.0,
         ninety-nine-haskell-problems,
-        hspec ^>= 2.11.10
+        hspec ^>= 2.11.10,
+        random ^>=1.2.1.2

@@ -2,6 +2,7 @@ module NinetyNine where
 
 import Data.List (uncons)
 import Data.Maybe (fromJust)
+import System.Random hiding (split)
 
 -- Ex.1
 myLast :: [a] -> a
@@ -175,3 +176,10 @@ insertAt x xs n = left ++ [x] ++ right
 -- Ex.22
 range :: Int -> Int -> [Int]
 range a b = [a .. b]
+
+-- Ex.23
+rndSelect :: [a] -> Int -> IO [a]
+rndSelect [] _ = return []
+rndSelect xs n = do
+  gen <- getStdGen
+  return $ take n [xs !! x | x <- randomRs (0, length xs - 1) gen]

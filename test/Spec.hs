@@ -1,5 +1,6 @@
 import Control.Exception (evaluate)
 import NinetyNine
+import System.Random (mkStdGen, setStdGen)
 import Test.Hspec
 
 main :: IO ()
@@ -227,3 +228,13 @@ main = hspec $ do
 
       it "returns a list with elements from a to b" $ do
         range 4 9 `shouldBe` [4, 5, 6, 7, 8, 9]
+
+    describe "rndSelect" $ do
+      it "returns an empty list when given an empty list" $ do
+        result <- rndSelect "" 3
+        result `shouldBe` ""
+
+      it "returns random elements from a list" $ do
+        setStdGen (mkStdGen 42)
+        result <- rndSelect "abcdefgh" 3
+        result `shouldBe` "ahh"
