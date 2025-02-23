@@ -165,3 +165,9 @@ removeAt :: Int -> [a] -> (a, [a])
 removeAt n xs = case splitAt (n - 1) xs of
   (left, r : rs) -> (r, left ++ rs)
   _ -> error "index out of bounds"
+
+-- Ex.21
+insertAt :: a -> [a] -> Int -> [a]
+insertAt x xs n = left ++ [x] ++ right
+  where
+    (left, right) = splitAt (n - 1) xs

@@ -210,3 +210,10 @@ main = hspec $ do
 
       it "returns an element at given index and a list without that element" $ do
         removeAt 2 "abcd" `shouldBe` ('b', "acd")
+
+    describe "insertAt" $ do
+      it "returns 1 element list when given an empty list and any index" $ do
+        insertAt 5 [] (-1) `shouldBe` ([5] :: [Int])
+
+      it "returns list with an element inserted" $ do
+        insertAt 'X' "abcd" 2 `shouldBe` "aXbcd"
