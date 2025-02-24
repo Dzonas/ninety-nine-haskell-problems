@@ -238,3 +238,25 @@ main = hspec $ do
         setStdGen (mkStdGen 42)
         result <- rndSelect "abcdefgh" 3
         result `shouldBe` "ahh"
+
+    describe "diffSelect" $ do
+      it "returns a one element list when n == 1" $ do
+        setStdGen (mkStdGen 42)
+        result <- diffSelect 1 49
+        result `shouldBe` [49]
+
+      it "returns n different random numbers from set 1..m" $ do
+        setStdGen (mkStdGen 42)
+        result <- diffSelect 6 49
+        result `shouldBe` [21, 18, 16, 33, 24, 49]
+
+      it "throws an error when m < 1" $ do
+        (diffSelect 6 0 >>= evaluate) `shouldThrow` errorCall "m < 1"
+
+      it "returns an empty list when given n = 0" $ do
+        result <- diffSelect 0 49
+        result `shouldBe` []
+
+      it "returns an empty list when given n < 0" $ do
+        result <- diffSelect (-1) 49
+        result `shouldBe` []

@@ -183,3 +183,20 @@ rndSelect [] _ = return []
 rndSelect xs n = do
   gen <- getStdGen
   return $ take n [xs !! x | x <- randomRs (0, length xs - 1) gen]
+
+-- Ex.24
+diffSelect :: Int -> Int -> IO [Int]
+diffSelect n m
+  | m < 1 = error "m < 1"
+  | n < 1 = return []
+  | otherwise = do
+      gen <- getStdGen
+      diffSelect' n [1 .. m] [] gen
+
+diffSelect' :: Int -> [Int] -> [Int] -> StdGen -> IO [Int]
+diffSelect' 0 _ ys _ = return ys
+diffSelect' n xs ys g = do
+  let (i, g') = uniformR (0, length xs - 1) g
+   in case splitAt i xs of
+        (left, r : right) -> diffSelect' (n - 1) (left ++ right) (r : ys) g'
+        _ -> error "unreachable"
