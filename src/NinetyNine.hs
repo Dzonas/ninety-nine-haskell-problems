@@ -201,3 +201,12 @@ diffSelect' n xs ys g = do
    in case splitAt i xs of
         (left, r : right) -> diffSelect' (n - 1) (left ++ right) (r : ys) g'
         _ -> error "unreachable"
+
+-- Ex.25
+rndPermu :: [a] -> IO [a]
+rndPermu [] = return []
+rndPermu xs = do
+  indexes <- diffSelect l l
+  return [xs !! j | i <- indexes, let j = i - 1]
+  where
+    l = length xs

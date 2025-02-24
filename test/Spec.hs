@@ -263,3 +263,13 @@ main = hspec $ do
 
       it "throws an error when n > m" $ do
         (diffSelect 7 6 >>= evaluate) `shouldThrow` errorCall "n > m"
+
+    describe "rndPermu" $ do
+      it "returns an empty list when given an empty list" $ do
+        result <- rndPermu [] :: IO [Int]
+        result `shouldBe` []
+
+      it "returns a random permutation of a given list" $ do
+        setStdGen (mkStdGen 42)
+        result <- rndPermu "abcdef"
+        result `shouldBe` "cfdeba"
