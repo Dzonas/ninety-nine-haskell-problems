@@ -189,6 +189,7 @@ diffSelect :: Int -> Int -> IO [Int]
 diffSelect n m
   | m < 1 = error "m < 1"
   | n < 1 = return []
+  | n > m = error "n > m"
   | otherwise = do
       gen <- getStdGen
       diffSelect' n [1 .. m] [] gen

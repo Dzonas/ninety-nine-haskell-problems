@@ -260,3 +260,6 @@ main = hspec $ do
       it "returns an empty list when given n < 0" $ do
         result <- diffSelect (-1) 49
         result `shouldBe` []
+
+      it "throws an error when n > m" $ do
+        (diffSelect 7 6 >>= evaluate) `shouldThrow` errorCall "n > m"
