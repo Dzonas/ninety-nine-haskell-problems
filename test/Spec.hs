@@ -273,3 +273,10 @@ main = hspec $ do
         setStdGen (mkStdGen 42)
         result <- rndPermu "abcdef"
         result `shouldBe` "cfdeba"
+
+    describe "combinations" $ do
+      it "returns a list with one element: an empty list, when given an empty list" $ do
+        combinations 6 [] `shouldBe` ([] :: [[Int]])
+
+      it "returns all possible combinations of a given list" $ do
+        combinations 2 "abc" `shouldBe` ["ab", "ac", "bc"]
