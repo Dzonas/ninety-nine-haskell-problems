@@ -280,3 +280,10 @@ main = hspec $ do
 
       it "returns all possible combinations of a given list" $ do
         combinations 2 "abc" `shouldBe` ["ab", "ac", "bc"]
+
+    describe "lsort" $ do
+      it "returns an empty list when given an empty list" $ do
+        lsort [] `shouldBe` ([] :: [[Int]])
+
+      it "returns a list of list, sorted by the length of inner lists" $ do
+        lsort ["abc", "de", "fgh", "de", "ijkl", "mn", "o"] `shouldBe` ["o", "de", "de", "mn", "abc", "fgh", "ijkl"]

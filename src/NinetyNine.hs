@@ -1,6 +1,6 @@
 module NinetyNine where
 
-import Data.List (uncons)
+import Data.List (sortOn, uncons)
 import Data.Maybe (fromJust)
 import System.Random hiding (split)
 
@@ -222,3 +222,7 @@ combinations n xs =
 
 -- Ex.27
 -- TODO
+
+-- Ex.28
+lsort :: [[a]] -> [[a]]
+lsort = map snd . sortOn fst . map (\ys -> (length ys, ys))
