@@ -294,3 +294,10 @@ main = hspec $ do
 
       it "returns a list of lists with elements sorted by their length frequency" $ do
         lfsort ["abc", "de", "fgh", "de", "ijkl", "mn", "o"] `shouldBe` ["o", "ijkl", "abc", "fgh", "de", "de", "mn"]
+
+    describe "isPrime" $ do
+      it "returns True when number is prime" $ do
+        isPrime 7 `shouldBe` True
+
+      it "returns False when number is not prime" $ do
+        isPrime 6 `shouldBe` False
