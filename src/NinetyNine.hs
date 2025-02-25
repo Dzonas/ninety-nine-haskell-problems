@@ -1,6 +1,6 @@
 module NinetyNine where
 
-import Data.List (sortOn, uncons)
+import Data.List (groupBy, sortOn, uncons)
 import Data.Maybe (fromJust)
 import System.Random hiding (split)
 
@@ -225,4 +225,7 @@ combinations n xs =
 
 -- Ex.28
 lsort :: [[a]] -> [[a]]
-lsort = map snd . sortOn fst . map (\ys -> (length ys, ys))
+lsort = sortOn length
+
+lfsort :: [[a]] -> [[a]]
+lfsort = concat . sortOn length . groupBy (\xs ys -> length xs == length ys) . sortOn length

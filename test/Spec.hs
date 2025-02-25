@@ -287,3 +287,10 @@ main = hspec $ do
 
       it "returns a list of list, sorted by the length of inner lists" $ do
         lsort ["abc", "de", "fgh", "de", "ijkl", "mn", "o"] `shouldBe` ["o", "de", "de", "mn", "abc", "fgh", "ijkl"]
+
+    describe "lfsort" $ do
+      it "returns an empty list when given an empty list" $ do
+        lfsort [] `shouldBe` ([] :: [[Int]])
+
+      it "returns a list of lists with elements sorted by their length frequency" $ do
+        lfsort ["abc", "de", "fgh", "de", "ijkl", "mn", "o"] `shouldBe` ["o", "ijkl", "abc", "fgh", "de", "de", "mn"]
