@@ -219,3 +219,6 @@ combinations n xs =
   | i <- [0 .. length xs - 1],
     x <- combinations (n - 1) (drop (i + 1) xs)
   ]
+
+-- Ex.27
+-- TODO
