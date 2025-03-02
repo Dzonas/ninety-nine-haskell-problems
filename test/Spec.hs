@@ -315,3 +315,10 @@ main = hspec $ do
 
       it "returns False when gcd of arguments is not 1" $ do
         coprime @Int 35 63 `shouldBe` False
+
+    describe "totient" $ do
+      it "returns 1 when given 1" $ do
+        totient @Int 1 `shouldBe` 1
+
+      it "returns number of positive integers up to m that are coprime to m" $ do
+        totient @Int 10 `shouldBe` 4

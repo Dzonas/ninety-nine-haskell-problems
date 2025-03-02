@@ -247,3 +247,8 @@ myGCD a b = gcd b c
 -- Ex.33
 coprime :: (Integral a) => a -> a -> Bool
 coprime a b = gcd a b == 1
+
+-- Ex.34
+totient :: (Integral a) => a -> Int
+totient 1 = 1
+totient m = length [n | n <- [1 .. (m - 1)], coprime n m]
