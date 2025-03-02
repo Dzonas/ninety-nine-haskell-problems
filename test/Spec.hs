@@ -329,3 +329,7 @@ main = hspec $ do
 
       it "returns an empty list when given a number less than 2" $ do
         primeFactors @Int 1 `shouldBe` []
+
+    describe "primeFactorsMult" $ do
+      it "returns a list of prime factors and their multiplicity" $ do
+        primeFactorsMult @Int 315 `shouldBe` [(3, 2), (5, 1), (7, 1)]

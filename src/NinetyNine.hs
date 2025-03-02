@@ -265,3 +265,7 @@ primeFactors' :: (Integral a) => a -> a -> (a, a)
 primeFactors' a b = case divMod a b of
   (n, 0) -> (n, b)
   (_, _) -> primeFactors' a (b + 1)
+
+-- Ex.36
+primeFactorsMult :: (Integral a) => a -> [(a, Int)]
+primeFactorsMult = map (\(a, b) -> (b, a)) . encode . primeFactors
