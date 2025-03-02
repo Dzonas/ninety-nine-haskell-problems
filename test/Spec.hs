@@ -301,3 +301,10 @@ main = hspec $ do
 
       it "returns False when number is not prime" $ do
         isPrime 6 `shouldBe` False
+
+    describe "myGCD" $ do
+      it "returns a when b == 0" $ do
+        myGCD 6 0 `shouldBe` (6 :: Int)
+
+      it "returns greatest common divisor of a and b" $ do
+        myGCD 1071 462 `shouldBe` (21 :: Int)

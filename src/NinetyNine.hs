@@ -230,9 +230,16 @@ lsort = sortOn length
 lfsort :: [[a]] -> [[a]]
 lfsort = concat . sortOn length . groupBy (\xs ys -> length xs == length ys) . sortOn length
 
--- Ex.29
+-- Ex.31
 isPrime :: Int -> Bool
 isPrime n = all (\x -> mod n x /= 0) [2 .. floor end]
   where
     end :: Float
     end = sqrt . fromIntegral $ n
+
+-- Ex.32
+myGCD :: (Integral a) => a -> a -> a
+myGCD a 0 = a
+myGCD a b = gcd b c
+  where
+    c = mod a b
