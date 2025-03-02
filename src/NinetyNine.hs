@@ -252,3 +252,16 @@ coprime a b = gcd a b == 1
 totient :: (Integral a) => a -> Int
 totient 1 = 1
 totient m = length [n | n <- [1 .. (m - 1)], coprime n m]
+
+-- Ex.35
+primeFactors :: (Integral a) => a -> [a]
+primeFactors n
+  | n < 2 = []
+  | otherwise = b : primeFactors a
+  where
+    (a, b) = primeFactors' n 2
+
+primeFactors' :: (Integral a) => a -> a -> (a, a)
+primeFactors' a b = case divMod a b of
+  (n, 0) -> (n, b)
+  (_, _) -> primeFactors' a (b + 1)

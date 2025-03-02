@@ -322,3 +322,10 @@ main = hspec $ do
 
       it "returns number of positive integers up to m that are coprime to m" $ do
         totient @Int 10 `shouldBe` 4
+
+    describe "primeFactors" $ do
+      it "returns prime factors of the argument in ascending order" $ do
+        primeFactors @Int 315 `shouldBe` [3, 3, 5, 7]
+
+      it "returns an empty list when given a number less than 2" $ do
+        primeFactors @Int 1 `shouldBe` []
