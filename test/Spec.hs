@@ -308,3 +308,10 @@ main = hspec $ do
 
       it "returns greatest common divisor of a and b" $ do
         myGCD 1071 462 `shouldBe` (21 :: Int)
+
+    describe "coprime" $ do
+      it "returns True when gcd of arguments is 1" $ do
+        coprime @Int 35 64 `shouldBe` True
+
+      it "returns False when gcd of arguments is not 1" $ do
+        coprime @Int 35 63 `shouldBe` False

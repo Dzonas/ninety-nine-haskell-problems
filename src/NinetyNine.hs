@@ -243,3 +243,7 @@ myGCD a 0 = a
 myGCD a b = gcd b c
   where
     c = mod a b
+
+-- Ex.33
+coprime :: (Integral a) => a -> a -> Bool
+coprime a b = gcd a b == 1
